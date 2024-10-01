@@ -7,7 +7,7 @@
 }
 
 body {
-    background: linear-gradient(135deg, #1e1e1e, #292929);
+    background: linear-gradient(135deg, #1c1c24, #2a223a);
     color: #fff;
     line-height: 1.6;
 }
@@ -57,7 +57,7 @@ header h1 {
 
 .bio-section h2, .music-section h2, .concert-section h2 {
     font-size: 2.5rem;
-    color: #ffdf00;
+    color: #f0f0f0;
     margin-bottom: 20px;
     text-align: center;
     text-transform: uppercase;
@@ -80,7 +80,7 @@ header h1 {
 }
 
 .button {
-    background: linear-gradient(145deg, #ff0040, #ff6200);
+    background: linear-gradient(145deg, #a06cd5, #6247aa);
     padding: 15px 30px;
     color: #fff;
     font-size: 1.2rem;
@@ -93,7 +93,7 @@ header h1 {
 
 .button:hover {
     transform: scale(1.1);
-    background: linear-gradient(145deg, #ff6200, #ff0040);
+    background: linear-gradient(145deg, #6247AA, #41658A);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7);
 }
 
