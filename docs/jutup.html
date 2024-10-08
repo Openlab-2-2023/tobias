@@ -1,11 +1,11 @@
-
-
 <!DOCTYPE html>
 <html lang="sk">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YouTube Layout</title>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
             background: linear-gradient(135deg, #2f2f2f, #4b4b4b);
@@ -30,6 +30,21 @@
             border-radius: 5px;
         }
 
+        .icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .icons i {
+            font-size: 20px;
+            color: white;
+            cursor: pointer;
+        }
+
+        .icons i:hover {
+            color: lightgray;
+        }
+
         main {
             padding: 20px;
         }
@@ -44,6 +59,12 @@
             background-color: #1e1e1e;
             padding: 10px;
             border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .video-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
         }
 
         .video-item img {
@@ -59,50 +80,59 @@
         .green-text {
             color: lightgreen;
         }
+
     </style>
 </head>
 <body>
 
     <header>
-        <h1>YouTube Layout</h1>
-        <input type="text" placeholder="Hľadať">
+        <div style="display: flex; align-items: center;">
+            <img src="../images/48968.png" alt="YouTube logo" style="width: 40px; margin-right: 10px;">
+            <h1>YouTube Layout</h1>
+        </div>
+        <input type="text" id="searchBar" onkeyup="filterVideos()" placeholder="Hľadať...">
+        <div class="icons">
+            <i class="fas fa-video"></i>
+            <i class="fas fa-bell"></i>
+            <i class="fas fa-user-circle"></i>
+        </div>
     </header>
 
     <main>
-        <section class="video-grid">
+        <section class="video-grid" id="videoGrid">
 
-            <div class="video-item">
-                <img src="images\videoframe_886677.png" alt="I bought the most EXCLUSIVE phones in the World!">
+            <div class="video-item" data-youtuber="Mrwhosetheboss">
+                <img src="../images/videoframe_886677.png" alt="I bought the most EXCLUSIVE phones in the World!">
                 <h3>I bought the most EXCLUSIVE phones in the World!</h3>
                 <p>Mrwhosetheboss • 9 mil. zhliadnutí • pred 9 mesiacmi</p>
             </div>
 
-            <div class="video-item">
-                <img src="" alt="Zistil že sme ho OKRADLI">
+            <div class="video-item" data-youtuber="DuklockPlus">
+                <img src="../images/fuglog.png" alt="Zistil že sme ho OKRADLI">
                 <h3>Zistil že sme ho OKRADLI</h3>
                 <p>DuklockPlus • 144 tis. zhliadnutí • pred 4 mesiacmi</p>
             </div>
 
-            <div class="video-item">
-                <img src="" alt="make ANYTHING playable">
+            <div class="video-item" data-youtuber="synthET">
+                <img src="../images/fl.png" alt="make ANYTHING playable">
                 <h3>make ANYTHING playable</h3>
                 <p>synthET • 101 tis. zhliadnutí • pred 10 dňami</p>
             </div>
 
-            <div class="video-item">
-                <img src="" alt="PROČ JE TOHLE NEJLEPŠÍ FILM OD PIXARU?">
+            <div class="video-item" data-youtuber="Tomáš Krch">
+                <img src="../images/myska.png" alt="PROČ JE TOHLE NEJLEPŠÍ FILM OD PIXARU?">
                 <h3>PROČ JE TOHLE NEJLEPŠÍ FILM OD PIXARU?</h3>
                 <p>Tomáš Krch • 62 tis. zhliadnutí • pred 3 dňami</p>
             </div>
 
-            <div class="video-item">
-                <img src="" alt="FL Studio Effect Secrets You NEED to Know">
+            <div class="video-item" data-youtuber="BRUCE FLAME">
+                <img src="../images/future.png" alt="FL Studio Effect Secrets You NEED to Know">
                 <h3>FL Studio Effect Secrets You NEED to Know</h3>
                 <p>BRUCE FLAME • 379 zhliadnutí • pred 2 dňami</p>
             </div>
 
-            <div class="video-item">
-                <img src="" alt="Self Heating Chinese Hotpot Meals">
+            <div class="video-item" data-youtuber="DancingBacons">
+                <img src="../images/polievka.png" alt="Self Heating Chinese Hotpot Meals">
                 <h3>Self Heating Chinese Hotpot Meals</h3>
                 <p>DancingBacons • 400 tis. zhliadnutí • pred 2 mesiacmi</p>
             </div>
@@ -111,8 +141,24 @@
     </main>
 
     <footer>
-        <p class="white-text">prave som po sprske. Programujem ako fresh clovek</p>
+        <p class="white">Pekne som sa osprchoval.</p>
     </footer>
+
+    <script>
+        function filterVideos() {
+            const searchValue = document.getElementById('searchBar').value.toLowerCase();
+            const videos = document.querySelectorAll('.video-item');
+
+            videos.forEach(video => {
+                const youtuber = video.getAttribute('data-youtuber').toLowerCase();
+                if (youtuber.includes(searchValue)) {
+                    video.style.display = 'block';
+                } else {
+                    video.style.display = 'none';
+                }
+            });
+        }
+    </script>
 
 </body>
 </html>
